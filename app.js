@@ -9,6 +9,7 @@ const Order = require('./api/models/order');
 const authRoutes = require('./api/routes/auth');
 const usersRoutes = require('./api/routes/users');
 const orderRoutes = require('./api/routes/orderRoutes');
+const newsRoutes = require('./api/routes/newsRouter')
 const app = express();
 
 //mongoose.connect('mongodb+srv://umoney:sasa1307@umoney-cloud-axhat.mongodb.net/test');
@@ -28,13 +29,14 @@ app.use(bodyParser.json());
 app.all((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
-    if(req.method === 'OPTIONS') res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, PATCH, DELETE');     
+    // if(req.method === 'OPTIONS') res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, PATCH, DELETE');     
     next();
 });
 
 // app.use('/auth', authRoutes);
 // app.use('/users', usersRoutes);
 app.use('/order', orderRoutes);
+app.use('/news', newsRoutes);
 
 
 
